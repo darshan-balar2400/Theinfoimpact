@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+$mainColor: #ee443a;
+
+@font-face {
+    font-family: myfont;
+    src: url("/public/fonts/medium.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Century Gothic";
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: myfont;
+}
+
+.link {
+    @apply mx-6 text-gray-400 border-b-2 border-dotted border-gray-400 hover:text-[#EE443A] transition ease-in-out delay-100;
+}
+
+@media (min-width: 0px) and (max-width: 640px) {
+    main {
+        .content {
+            width: 100%;
+        }
+    }
+}
+
+// Navbar CSS
+.navbar_container {
+    .navbar_content {
+        @media (min-width: 0px) and (max-width: 640px) {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        // hide mobile menu from the large screens
+        .mobile_menu {
+            display: none;
+            font-size: 2rem;
+            width: max-content;
+        }
+
+        @media (min-width: 0px) and (max-width: 640px) {
+            .logo {
+                grid-column: 1 / span 2;
+
+                .content {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    justify-content: center;
+                    align-items: center;
+
+                    .mobile_menu {
+                        display: block;
+                    }
+
+                    .image {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        img {
+                            margin-right: 2.5rem;
+                        }
+                    }
+                }
+            }
+
+            .links {
+                display: none;
+            }
+        }
+    }
+}
+
+// Hero Section CSS
+
+.hero_container {
+    @media (min-width: 0px) and (max-width: 640px) {
+        width: 100%;
+
+        .content {
+            grid-template-columns: 1fr;
+            place-items: center;
+
+            .hero_image {
+                display: none;
+            }
+
+            .hero_content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 2rem;
+
+                .title {
+                    h1 {
+                        font-size: 2rem;
+                    }
+                }
+
+                .description {
+                    p {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+    }
+}

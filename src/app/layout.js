@@ -1,6 +1,7 @@
+import Header from "@/components/Header";
 import { Inter } from "next/font/google";
-import "./globals.css";
-
+import "../index.css";
+import Hero from "@/components/Hero";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +12,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="flex flex-col items-center justify-center">
+          <div className="content w-9/12">
+            <Header />
+            {children}
+          </div>
+        </main>{" "}
+      </body>
     </html>
   );
 }

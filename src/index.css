@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: myfont;
+  src: url("/public/fonts/medium.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Century Gothic";
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: myfont;
+}
+
+.link {
+  @apply mx-6 text-gray-400 border-b-2 border-dotted border-gray-400 hover:text-[#EE443A] transition ease-in-out delay-100;
+}
+
+@media (min-width: 0px) and (max-width: 640px) {
+  main .content {
+    width: 100%;
+  }
+}
+@media (min-width: 0px) and (max-width: 640px) {
+  .navbar_container .navbar_content {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+.navbar_container .navbar_content .mobile_menu {
+  display: none;
+  font-size: 2rem;
+  width: -moz-max-content;
+  width: max-content;
+}
+@media (min-width: 0px) and (max-width: 640px) {
+  .navbar_container .navbar_content .logo {
+    grid-column: 1/span 2;
+  }
+  .navbar_container .navbar_content .logo .content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar_container .navbar_content .logo .content .mobile_menu {
+    display: block;
+  }
+  .navbar_container .navbar_content .logo .content .image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar_container .navbar_content .logo .content .image img {
+    margin-right: 2.5rem;
+  }
+  .navbar_container .navbar_content .links {
+    display: none;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 640px) {
+  .hero_container {
+    width: 100%;
+  }
+  .hero_container .content {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  .hero_container .content .hero_image {
+    display: none;
+  }
+  .hero_container .content .hero_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  .hero_container .content .hero_content .title h1 {
+    font-size: 2rem;
+  }
+  .hero_container .content .hero_content .description p {
+    word-break: break-all;
+  }
+}/*# sourceMappingURL=index.css.map */
