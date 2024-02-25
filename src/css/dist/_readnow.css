@@ -1,0 +1,53 @@
+.read_container {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.read_container .content {
+  width: 75%;
+}
+.read_container .content .articles {
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.read_container .content .articles .article {
+  border: 1px solid gray;
+  height: auto;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: auto;
+  grap: 2rem;
+}
+.read_container .content .articles .article:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.read_container .content .articles .article .left {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid red;
+}
+.read_container .content .articles .article .left .image {
+  width: 100%;
+  height: 100%;
+}
+.read_container .content .articles .article .left .image img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+}
+.read_container .content .articles .article .right {
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.read_container .content .articles .article .right .title h1 {
+  font-size: 2.5rem;
+}

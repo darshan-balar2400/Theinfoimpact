@@ -1,0 +1,86 @@
+// Navbar CSS
+.navbar_container {
+    position: sticky;
+    top:0;
+    background-color: white;
+    width:100% !important;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    z-index:1;
+
+    .navbar_content {
+        width:75%;
+
+        @media (min-width: 0px) and (max-width: 1500px) {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        // hide mobile menu from the large screens
+        .mobile_menu {
+            display: none;
+            font-size: 3rem;
+            width: max-content;
+
+            @media (min-width:nth($smallScreen,1)) and (max-width:nth($smallScreen,2)) {
+                font-size:2.5rem;
+            }
+        }
+
+        @media (min-width: 0px) and (max-width: 1500px) {
+            .logo {
+                grid-column: 1 / span 2;
+
+                .content {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    justify-content: center;
+                    align-items: center;
+
+                    .mobile_menu {
+                        display: block;
+                    }
+
+                    .image {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        img {
+                            margin-right: 2.5rem;
+                        }
+                    }
+                }
+            }
+
+            .links {
+                display: none;
+            }
+        }
+
+        @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
+            .logo {
+                .image {
+                    img {
+                        width: 15rem;
+                        height: 6rem;
+                    }
+                }
+            }
+        }
+
+        .links {
+            .link {
+                font-size: 1.8rem;
+
+                @media (min-width:nth($mediumScreen,1)) and (max-width:nth($mediumScreen,2)){
+                    font-size:$mediumScreenTextSize;
+                }
+
+                @media(min-width:966px) and (max-width:1080px){
+                    font-size:1.5rem;
+                }
+            }
+        }
+    }
+}

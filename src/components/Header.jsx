@@ -4,7 +4,7 @@ import { CgMenuLeftAlt } from "react-icons/cg";
 const Header = () => {
   return (
     <nav className="navbar_container flex justify-center items-center p-2">
-      <div className="navbar_content content grid grid-cols-2 items-center w-[100%]">
+      <div className="navbar_content grid grid-cols-2 items-center">
         <div className="logo">
           <div className="content">
             <div className="mobile_menu mx-5">

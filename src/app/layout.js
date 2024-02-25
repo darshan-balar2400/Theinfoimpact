@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <main className="flex flex-col items-center justify-center">
-          <div className="content w-9/12">
+          <div className="content w-[100%] ">
             <Header />
             {children}
           </div>

@@ -14,7 +14,7 @@ const Hero = () => {
         </div>
         <div className="hero_content self-center">
           <div className="title">
-            <h1 className="text-4xl text-blue-400">
+            <h1 className="text-4x">
               Stay informed in 60 words.
             </h1>
           </div>
@@ -44,6 +44,7 @@ const Hero = () => {
                   width={151}
                   height={45}
                   alt="Android App Store"
+                  
                 />
               </Link>
             </button>

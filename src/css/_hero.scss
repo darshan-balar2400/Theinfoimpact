@@ -1,0 +1,87 @@
+.hero_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:6rem 0rem;
+
+    .content {
+        width:75%;
+
+        @media (min-width:nth($smallScreen,1)) and (max-width:nth($smallScreen,2)) {
+            width:90%;
+        }
+
+        @media (min-width: nth($smallScreen,1)) and (max-width: nth($mediumScreen,2)) {
+            grid-template-columns: 1fr;
+            place-items: center;
+
+            .hero_image {
+                display: none;
+            }
+        }
+        .hero_content {
+
+            @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                width: 80%;
+            }
+
+            @media (min-width: nth($smallScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            .title {
+                width: 100%;
+
+                h1 {
+                    font-size: $largeScreenTitleFontSize;
+                    line-height: 1.2;
+                    text-align: left;
+                    color:$mainColor;
+
+                    @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                        font-size: $mediumScreenTitleFontSize;
+                        text-align: center;
+                    }
+
+                    @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
+                        font-size: $smallScreenTitleFontSize;
+                        text-align: center;
+                    }
+                }
+            }
+            .description {
+                font-size: $largeScreenTextSize;
+                line-height: 1.5;
+                text-align: left;
+
+                @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                    font-size: $mediumScreenTextSize;
+                    text-align: center;
+                }
+
+                @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
+                    font-size: $smallScreenTextSize;
+                    text-align: center;
+                }
+            }
+
+            .buttons {
+                img {
+                    @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                        width: 12rem;
+                        height: 4rem;
+                    }
+
+                    @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
+                        width: 8rem;
+                        height: 2.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
