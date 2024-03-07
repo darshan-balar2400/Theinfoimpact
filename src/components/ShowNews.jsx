@@ -116,6 +116,7 @@ const ShowNews = ({ title, to,class_name,id }) => {
                         href={`/readnow/${title}`}
                         className="article"
                         id={title + index}
+                        key={index}
                       >
                         <div className="article_body">
                           <img
