@@ -78,8 +78,8 @@ const ShowNews = ({ title, to,class_name,id }) => {
             {/* product */}
             {loading ? (
               <>
-                {Array.from({ length: 10 }, () => (
-                  <div className="article" style={{ opacity: "0.7" }}>
+                {Array.from({ length: 10 }, (_, index) => (
+                  <div className="article" style={{ opacity: "0.7" }} key={index}>
                     <div className="article_body ">
                       <Skeleton
                         //  sx={{ bgcolor: '' }}
