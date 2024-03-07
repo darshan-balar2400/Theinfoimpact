@@ -1,24 +1,143 @@
-.read_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.category_button {
+    width: max-content;
+    position: sticky;
+    bottom: 5%;
+    left: 3%;
 
-    @media (min-width: 0px) and (max-width: 499px) {
-        height:auto;
+    @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+        display: none;
     }
 
-    .content{
+    button {
+        width: 6.5rem;
+        height: 6.5rem;
+        padding: 2rem;
+        border-radius: 50%;
+        background-color: common.$mainColor;
+        color: white;
+        border: none;
+        outline: none;
+        font-size: 3rem;
+        @include common.centerHV();
+        box-shadow:
+            rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+            rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    }
+}
+
+.category_container {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    z-index: 99;
+    // left:0;
+    // width: 100vw;
+
+    // overflow: hidden;
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: white;
+    border: 1px solid common.$gray;
+    transition: all 0.4s;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    box-shadow:
+        rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+    padding: 0rem 2rem;
+
+    &::-webkit-scrollbar {
+        // width: 0.5rem;
+        height: 0.4rem;
+        background-color: common.$lightgray;
+    }
+    &::-webkit-scrollbar-track {
+        width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        // width: 100%;
+        width: max-content;
+        background-color: common.$mainColor;
+        border-radius: 0.5rem;
+    }
+
+    .categories {
+        // margin: 2rem 0rem;
+        // width: 100vw;
+        // overflow:auto;
+        // overflow: hidden;
+        height: 7vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // &::-webkit-scrollbar {
+        //     width: 0.5rem;
+        //     background-color: rgb(240, 184, 184);
+        // }
+        // &::-webkit-scrollbar-track {
+        //     width: 0.5rem;
+        // }
+
+        // &::-webkit-scrollbar-thumb {
+        //     width: 100%;
+        //     background-color: common.$mainColor;
+        //     border-radius: 0.5rem;
+        // }
+
+        @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+            height: 5vh;
+        }
+        .category {
+            width: 100%;
+            // width:max-content;
+
+            // border:1px solid $gray;
+            // border: 1px solid $gray;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 2rem;
+            // margin-bottom: 1rem;
+            transition: all 0.4s;
+            text-transform: capitalize;
+
+            @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                color: common.$mainColor;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.read_container {
+    @include common.centerHV();
+    position: relative;
+
+    @media (min-width: 0px) and (max-width: 499px) {
+        height: auto;
+    }
+
+    .content {
         @media (min-width: 0px) and (max-width: 499px) {
-            height:100vh;
+            height: 100vh;
         }
     }
     .articles {
         width: 75%;
-        display: flex;
         margin: 2rem 0rem;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include common.centerHV();
 
         &::-webkit-scrollbar {
             display: none;
@@ -35,13 +154,42 @@
             margin: 0;
         }
 
+        .articles_title {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            @media (min-width: 0px) and (max-width: 499px) {
+               display: none;
+            }
+
+            .title {
+                h1 {
+                    font-size: 2.6rem;
+                    text-transform: common.$textTranform;
+                    color: common.$color2;
+                    text-align: center;
+                }
+            }
+
+            .articles_img {
+                margin: 4rem 0rem;
+
+                img {
+                    width: 10rem;
+                    height: 10rem;
+                }
+            }
+        }
+
         .article {
             width: 100%;
             border: 1px solid gray;
-            min-height: 35rem;
             display: grid;
             overflow: hidden;
-            
+
             grid-template-columns: 40% 1fr;
             grid-template-rows: auto;
             // gap: 2rem;
@@ -58,8 +206,8 @@
 
             @media (min-width: 0px) and (max-width: 499px) {
                 width: 100%;
-                min-height: calc(100vh - 81.1px);
-                max-height: calc(100vh - 81.1px);
+                min-height: calc(100vh - (81.1px + 5vh));
+                max-height: calc(100vh - (81.1px + 5vh));
                 overflow: hidden;
                 grid-template-columns: 1fr;
                 grid-template-rows: 35% 1fr;
@@ -75,13 +223,13 @@
                 overflow: hidden;
 
                 .image {
-                    border-right: 1px solid $gray;
+                    border-right: 1px solid common.$gray;
                     padding: 2rem;
                     width: 100%;
                     height: 100%;
 
                     @media (max-width: 1100px) {
-                        border-bottom: 3px solid $mainColor;
+                        border-bottom: 3px solid common.$mainColor;
                         border-right: none;
                     }
 
@@ -94,6 +242,9 @@
                         width: 100%;
                         border-radius: 0.7rem;
                         height: 100%;
+                        min-height: 30rem;
+                        max-height: 30rem;
+                        object-fit: cover;
 
                         @media (min-width: 0px) and (max-width: 499px) {
                             border-radius: 0;
@@ -117,7 +268,7 @@
 
                 .title {
                     padding: 2rem;
-                    // border-bottom: 1px solid $gray;
+                    border-bottom: 1px solid common.$gray;
 
                     @media (min-width: 0px) and (max-width: 499px) {
                         padding: 1.5rem 2rem;
@@ -126,37 +277,37 @@
                     h1 {
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 2; /* Limit to 2 lines */
+                        -webkit-line-clamp: 3; /* Limit to 2 lines */
                         overflow: hidden;
                         font-size: 2.5rem;
 
                         @media (min-width: 0px) and (max-width: 499px) {
-                            font-size: $smallScreenArticleTitleSize;
+                            font-size: common.$smallScreenArticleTitleSize;
                         }
                     }
 
                     .subtitle {
-                        color: $gray;
+                        color: common.$gray;
                         font-size: 1.4rem;
 
                         @media (min-width: 0px) and (max-width: 499px) {
-                            font-size: $smallScreenArticleSubTitleSize;
+                            font-size: common.$smallScreenArticleSubTitleSize;
                         }
 
                         .author {
-                            color: $mainColor;
+                            color: common.$mainColor;
                         }
                     }
 
                     .source {
                         // font-weight:bold;
                         // color:black;
-                        color: $mainColor;
+                        color: common.$mainColor;
                         text-decoration: underline;
                         transition: all 0.2s;
 
                         &:hover {
-                            color: $mainColor;
+                            color: common.$mainColor;
                         }
                     }
                 }
@@ -164,9 +315,9 @@
                 .description {
                     padding: 1rem 2rem;
                     overflow: auto;
-                    color:rgba(2, 2, 2, 0.7);
+                    color: rgba(2, 2, 2, 0.7);
 
-                    p{
+                    p {
                         line-height: 1.7;
                     }
                     @media (min-width: 0px) and (max-width: 499px) {
@@ -174,10 +325,63 @@
                     }
 
                     // min-height: 20rem;
-                    font-size: $largeScreenArticleTextSize;
+                    font-size: common.$largeScreenArticleTextSize;
                     // height:100%;
                 }
             }
         }
     }
+}
+
+.readnow_button {
+    padding: 1rem 3rem;
+    border: none;
+    outline: none;
+    background-color: common.$mainColor;
+    color: white;
+    @include common.centerHV();
+    // border-radius: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 7rem;
+
+    @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+        display: none;
+        position: sticky;
+        bottom: 10%;
+        // border-radius: 30%;
+        width: 15rem;
+        // height:15rem;
+        // left:50%;
+        // translate: translateX(-50%);
+    }
+}
+
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.buttonloader {
+    border: 0.3rem solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 0.3rem solid common.$mainColor;
+    width: 2rem;
+    height: 2rem;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
 }

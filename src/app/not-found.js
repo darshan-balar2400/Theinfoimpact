@@ -1,6 +1,10 @@
 const NotFound = () => {
     return (
-        <h1>404</h1>
+        <div className="not_found_container">
+        <div className="not_found">
+          <img src="/images/404_1.png" />
+        </div>
+      </div>
     )
 }
 

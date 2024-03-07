@@ -1,6 +1,5 @@
 "use server"
 
-import {JSDOM} from "jsdom";
 import axios from "axios";
 import https from "https";
 

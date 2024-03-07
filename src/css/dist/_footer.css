@@ -1,0 +1,76 @@
+footer {
+  margin-top: auto;
+}
+footer .footer_container {
+  background-color: #FAFAFA;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer .footer_container .footer_content {
+  padding: 5rem 0rem;
+  width: 75%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+footer .footer_container .footer_content .top_content {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  align-items: center;
+}
+footer .footer_container .footer_content .top_content .company_info {
+  padding: 2rem;
+}
+footer .footer_container .footer_content .top_content .company_info .title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+footer .footer_container .footer_content .top_content .company_info .subtitle {
+  font-size: 1.5rem;
+}
+footer .footer_container .footer_content .top_content .share_info {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 3rem;
+}
+footer .footer_container .footer_content .top_content .share_info .social_icons nav {
+  display: flex;
+  justify-content: flex-end;
+}
+footer .footer_container .footer_content .top_content .share_info .social_icons nav a {
+  margin-left: 1.5rem;
+}
+footer .footer_container .footer_content .top_content .share_info .subscribe {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+}
+footer .footer_container .footer_content .top_content .share_info .subscribe input {
+  border-radius: 0.4rem;
+}
+footer .footer_container .footer_content .top_content .share_info .subscribe button {
+  border-radius: 0.4rem;
+  margin: 0;
+}
+footer .footer_container .bottom_content {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+footer .footer_container .bottom_content .content {
+  width: 75%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.5rem;
+  gap: 2rem;
+}
+footer .footer_container .bottom_content .links {
+  display: flex;
+  justify-content: flex-end;
+}
+footer .footer_container .bottom_content .links nav a {
+  margin-left: 1.5rem;
+}

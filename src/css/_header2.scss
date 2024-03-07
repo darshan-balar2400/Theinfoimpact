@@ -1,0 +1,101 @@
+.header2_container {
+    // left:0;
+    // width: 100vw;
+
+    // overflow: hidden;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: white;
+    border-top: 1px solid common.$gray;
+    transition: all 0.4s;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media (min-width:nth(common.$smallScreen,1)) and (max-width:1380px){
+        align-items: flex-start;
+    }
+    flex-direction: column;
+    // flex-wrap: wrap;
+    // box-shadow:
+    //     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    //     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+    padding: 0rem 2rem;
+
+    // padding: 0rem 2rem;
+
+    &::-webkit-scrollbar {
+        // width: 0.5rem;
+        height: 0.4rem;
+        background-color: common.$lightgray;
+    }
+    &::-webkit-scrollbar-track {
+        width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        // width: 100%;
+        width: max-content;
+        background-color: common.$mainColor;
+        border-radius: 0.5rem;
+    }
+
+    .categories {
+        // margin: 2rem 0rem;
+        // width: 100vw;
+        // overflow:auto;
+        // width:100%;
+        // border:1px solid red;
+        height: 7vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // justify-content: center;
+        // align-items: center;
+
+        // &::-webkit-scrollbar {
+        //     width: 0.5rem;
+        //     background-color: rgb(240, 184, 184);
+        // }
+        // &::-webkit-scrollbar-track {
+        //     width: 0.5rem;
+        // }
+
+        // &::-webkit-scrollbar-thumb {
+        //     width: 100%;
+        //     background-color: common.$mainColor;
+        //     border-radius: 0.5rem;
+        // }
+
+        @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+            height: 5vh;
+        }
+
+
+        .category {
+            // width: 100%;
+            // width:max-content;
+
+            // border:1px solid $gray;
+            // border: 1px solid $gray;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            // margin-bottom: 1rem;
+            transition: all 0.4s;
+            text-transform: capitalize;
+
+            @media (min-width: nth(common.$smallScreen,2)) and (max-width: nth(common.$mediumScreen,2)) {
+                font-size: 2rem;
+            }
+
+            &:hover {
+                color: common.$mainColor;
+                cursor: pointer;
+            }
+        }
+    }
+}

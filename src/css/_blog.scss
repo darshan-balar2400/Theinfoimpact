@@ -1,0 +1,25 @@
+.blog_container{
+    width:100%;
+    height:100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: flex-start;
+
+    .coming_soon{
+        // width:40rem;
+        // border:1px solid red;
+
+        img{
+            width:100%;
+            height:60rem;
+        }
+
+        @media (min-width:nth(common.$smallScreen,1)) and (max-width:nth(common.$smallScreen,2)){
+            img{
+                height:40rem;
+            }
+        }
+      
+    }
+}

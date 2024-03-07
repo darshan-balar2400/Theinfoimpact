@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
-import { createProxyMiddleware } from 'http-proxy-middleware';
-import nodeExternals from 'webpack-node-externals';
 
-const nextConfig = {};
+const nextConfig = {
+  experimental:{
+    serverActions:true,
+    serverComponentsExternalPackages:["mongoose"]
+  },
+  images:{
+    domains:["nis-gs.pix.in"]
+  }
+};
 
 export async function rewrites() {
   return [
@@ -12,3 +18,5 @@ export async function rewrites() {
     },
   ];
 }
+
+export default nextConfig;

@@ -1,17 +1,26 @@
 // Navbar CSS
 .navbar_container {
     position: sticky;
-    top:0;
+    top: 0;
     background-color: white;
-    width:100% !important;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    z-index:1;
+    width: 100% !important;
+    box-shadow:
+        rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .navbar_content {
-        width:75%;
-
+        // border:1px solid red;
+        width: 75%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
         @media (min-width: 0px) and (max-width: 1500px) {
-            width: 100%;
+            // width: 100%;
             margin-top: 1rem;
         }
 
@@ -21,14 +30,46 @@
             font-size: 3rem;
             width: max-content;
 
-            @media (min-width:nth($smallScreen,1)) and (max-width:nth($smallScreen,2)) {
-                font-size:2.5rem;
+            @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                font-size: 2.5rem;
+            }
+        }
+        .logo_title {
+            display: flex;
+
+            font-size: 2.5rem;
+            cursor: pointer;
+            margin: 2rem 0rem;
+
+            h1 {
+                margin-left: 2rem;
+
+                &::first-letter,
+                .upper {
+                    color: common.$color2;
+                    font-size: 3.3rem;
+                }
+            }
+        }
+
+        @media (min-width: 0px) and (max-width: 1200px) {
+            width: 90%;
+        }
+
+        @media (min-width: 0px) and (max-width: 950px) {
+
+            grid-template-columns: 1fr auto auto;
+            .mobile_menu {
+                display: block;
+            }
+            .logo {
+                grid-column: 1 / span 2;
             }
         }
 
         @media (min-width: 0px) and (max-width: 1500px) {
             .logo {
-                grid-column: 1 / span 2;
+                // grid-column: 1 / span 2;
 
                 .content {
                     display: grid;
@@ -36,18 +77,16 @@
                     justify-content: center;
                     align-items: center;
 
-                    .mobile_menu {
-                        display: block;
-                    }
-
-                    .image {
+                    .logo_title {
+                        font-size: 2rem;
+                        // text-align: center;
                         width: 100%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        // border:1px solid red;
 
-                        img {
-                            margin-right: 2.5rem;
+                        &::first-letter,
+                        .upper {
+                            color: common.$color2;
+                            font-size: 2.5rem;
                         }
                     }
                 }
@@ -58,11 +97,11 @@
             }
         }
 
-        @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
+        @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
             .logo {
                 .image {
                     img {
-                        width: 15rem;
+                        width: 16rem;
                         height: 6rem;
                     }
                 }
@@ -70,15 +109,140 @@
         }
 
         .links {
-            .link {
-                font-size: 1.8rem;
+            
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
 
-                @media (min-width:nth($mediumScreen,1)) and (max-width:nth($mediumScreen,2)){
-                    font-size:$mediumScreenTextSize;
+            .items {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .link {
+                font-size: 1.6rem;
+                margin-left: 2rem;
+                text-transform: common.$textTranform;
+
+                &:hover {
+                    color: common.$color2;
                 }
 
-                @media(min-width:966px) and (max-width:1080px){
-                    font-size:1.5rem;
+                @media (min-width: nth(common.$mediumScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+                    font-size: common.$mediumScreenTextSize;
+                }
+
+                @media (min-width: 966px) and (max-width: 1080px) {
+                    font-size: 1.5rem;
+                }
+            }
+
+            @media (min-width: nth(common.$smallScreen,1)) and (max-width: 950px) {
+                .items{
+                    display: none;
+                }
+            }
+
+        }
+    }
+}
+
+.mobile_navbar {
+    // display: none;
+    width: 0%;
+    overflow: hidden;
+    height: 100vh;
+    // background-color: red;
+    position: fixed;
+    // background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    z-index: 105;
+    transition: all .4s;
+
+    .mobile_navbar_content {
+
+        width: 90%;
+        background-color: white;
+        height: 100%;
+        box-shadow: common.$boxShadow3;
+        border-right:1px solid common.$gray;
+
+        display: grid;
+        grid-template-rows: auto 1fr;
+        position: relative;
+
+        @media (min-width:nth(common.$smallScreen,1)) and (max-width:nth(common.$smallScreen,2)){
+            width:90%;
+        }
+
+        @media (min-width:600px) and (max-width:1250px){
+            width:60vw;
+        }
+
+        .close_menu{
+            position: absolute;
+            top:3%;
+            right:5%;
+
+            font-size: 4rem;
+
+            &:hover{
+                color:common.$color2;
+                cursor: pointer;
+            }
+        }
+
+        .logo_container {
+            margin-top: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid common.$gray;
+            padding: 2rem;
+        }
+
+        .links_container {
+            padding: 2rem;
+            margin-top: 3rem;
+
+            ul li {
+                a {
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    span {
+                        font-size: 2.5rem;
+                    }
+
+                    .left {
+                        margin-left: 2rem;
+                    }
+
+                    border: 1px solid common.$lightgray;
+                    font-size: 2rem;
+
+                    // padding:2rem;
+                    display: grid;
+                    grid-template-columns: auto 1fr auto;
+                    gap: 1rem;
+                    align-items: center;
+                    margin-bottom: 1.5rem;
+
+                    &:hover {
+                        color: common.$color2;
+                    }
+
+                    .linkname {
+                        font-size: 2rem;
+                    }
+
+                    .right {
+                        padding: 2rem;
+                        border: 1px solid common.$gray;
+                        // justify-content: flex-end;
+                    }
                 }
             }
         }

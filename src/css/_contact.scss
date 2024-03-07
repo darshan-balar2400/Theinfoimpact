@@ -1,0 +1,120 @@
+.contact_us_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0rem;
+
+    .contact_us_content {
+        width: 40vw;
+
+        @media (max-width:1300px) {
+            width: 60vw;
+        }
+
+        @media (max-width:767px) {
+            width: 80vw;
+        }
+
+        .contact_us_title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .title {
+
+                h1 {
+                    font-size: 2.6rem;
+                    color: common.$color2;
+                    text-align: center;
+                    text-transform: common.$textTranform;
+                }
+
+            }
+
+            .contact_us_img {
+                margin: 4rem 0rem;
+
+                img {
+                    width: 10rem;
+                    height: 10rem;
+                }
+            }
+
+        }
+
+        .contact_us_body {
+            margin: 2rem 0rem;
+            width: 100%;
+            // display: grid;
+            // grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+            // grid-gap: 2rem;
+            // align-items: flex-start;
+
+            .contact_us_form{
+                margin:5rem 0rem;
+                .title {
+
+                    h1 {
+                        font-size: 2.2rem;
+                        color: common.$color2;
+                        text-align: center;
+                        text-transform: common.$textTranform;
+                    }
+    
+                }
+            }
+
+            .contact_us_details {
+                .brand_image {
+                    img {
+                        width: 10rem;
+                        height: 10rem;
+                    }
+                }
+
+                .informations {
+                    margin: 2rem 0rem;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
+                    grid-gap:1rem;
+
+                    .section {
+                        padding: 1.5rem;
+                        border: 1px solid common.$borderColor2;
+
+                        .section_title {
+                            color: common.$color2;
+                            text-transform: capitalize;
+                            letter-spacing: 0;
+                            font-size:2rem;
+                        }
+
+                        .section_body {
+                            margin-top: 1rem;
+                            color: gray;
+                            text-transform: capitalize;
+                            letter-spacing: 0;
+                            font-size: 1.4rem;
+
+                            p{
+                                letter-spacing: 0;
+                                text-transform: capitalize;
+                            }
+
+                            .link{
+                                display: block;
+                                text-transform: none;
+                                letter-spacing: 0;
+                                color:gray;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

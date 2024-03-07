@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="content grid grid-cols-2">
         <div className="hero_image">
           <Image
-            src="/images/main_india.jpg"
+            src="/images/news_logo.png"
             alt="img"
             width={335}
             height={550}
@@ -14,15 +14,17 @@ const Hero = () => {
         </div>
         <div className="hero_content self-center">
           <div className="title">
-            <h1 className="text-4x">
-              Stay informed in 60 words.
-            </h1>
+            <h1 className="text-4x">#SHORT NEWS</h1>
           </div>
           <div className="description text-gray-500 my-8 text-xl">
             <p>
-              We understand you don’t have time to go through long news articles
-              everyday. So we cut the clutter and deliver them, in 60-word
-              shorts. Short news for the mobile generation.
+              Welcome to #ShortNews, where we prioritize your time by
+              condensing the day's top stories into bite-sized updates. Say
+              goodbye to sifting through lengthy articles – we're here to
+              deliver only the essential information you need. With our concise
+              summaries, you'll stay informed and up-to-date without sacrificing
+              precious time. Experience the convenience of staying in the know,
+              minus the clutter, with #ShortNews.
             </p>
           </div>
           <div className="buttons">
@@ -44,7 +46,6 @@ const Hero = () => {
                   width={151}
                   height={45}
                   alt="Android App Store"
-                  
                 />
               </Link>
             </button>

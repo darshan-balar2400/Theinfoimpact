@@ -1,0 +1,149 @@
+footer {
+    margin-top: auto;
+
+    .footer_container {
+        background-color: #fafafa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .footer_content {
+            padding: 5rem 0rem;
+            width: 75%;
+            display: grid;
+            grid-template-rows: 1fr auto;
+
+            @media (min-width: 0px) and (max-width: 1250px) {
+                width:90%;
+            }
+
+            .top_content {
+                display: grid;
+                grid-template-columns: 60% 1fr;
+                align-items: center;
+
+                @media (min-width: 0px) and (max-width: 1250px) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr;
+                }
+
+                .company_info {
+                    padding: 2rem;
+
+                    .title {
+                        font-size: 2.5rem;
+                        // color: white;
+                        margin-bottom: 1rem;
+                    }
+
+                    .subtitle {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .share_info {
+                    padding:2rem;
+                    display: grid;
+                    grid-template-rows: auto 1fr;
+                    gap: 3rem;
+
+
+                    .social_icons {
+                        nav {
+                            display: flex;
+                            justify-content: flex-end;
+
+                            @media (min-width: 0px) and (max-width: 1250px) {
+                                justify-content: flex-start;
+                            }
+
+                            a {
+                                &:not(:first-child){
+                                    margin-left: 1.5rem;
+                                }
+                            }
+                        }
+                    }
+
+                    .subscribe {
+                        display: flex;
+                        grid-template-columns: 1fr auto;
+                        gap: 2rem;
+
+                        // @media (min-width: 0px) and (max-width: 1250px) {
+                        //     grid-template-columns: 1fr auto;
+                        //     // grid-template-rows: 1fr 1fr;
+                        //     gap:0;
+                        // }
+                        // border:1px solid red;
+                        height:auto;
+
+                        input {
+                            border-radius: 0.4rem;
+                        }
+                        button {
+                            border-radius: 0.4rem;
+                            // background-color:white;
+                            // color:common.$color2;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom_content {
+            width: 100%;
+            padding: 2rem 0rem;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid common.$gray;
+            background-color: common.$color2;
+                color:white;
+
+            .content {
+                width: 75%;
+                
+
+                @media (min-width: 0px) and (max-width: 1250px) {
+                    width:90%;
+                }
+
+                // padding:3rem 0rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                font-size: 1.5rem;
+                gap: 2rem;
+
+                @media (min-width: 0px) and (max-width: 1250px) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: repeat(auto-fill, 1fr);
+
+                    .all_rights {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .links {
+                display: flex;
+                justify-content: flex-end;
+
+                @media (min-width: 0px) and (max-width: 1250px) {
+                    justify-content: center;
+                }
+
+                nav {
+                    a {
+                        margin-left: 1.5rem;
+
+                        &:hover {
+                            color: common.$color2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

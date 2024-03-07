@@ -1,10 +1,11 @@
 import Hero from "@/components/Hero";
-
+import Footer from "@/components/Footer";
+import News from "@/components/News";
 const Home = () => {
   return (
     <>
       <Hero />
-      <h1>this is the home page</h1>
+      <News/>
     </>
   );
 };

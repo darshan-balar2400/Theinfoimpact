@@ -1,84 +1,104 @@
 .hero_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include common.centerHV();
     margin:6rem 0rem;
+    height:60vh;
 
     .content {
         width:75%;
+        // border:1px solid red;
 
-        @media (min-width:nth($smallScreen,1)) and (max-width:nth($smallScreen,2)) {
+        @media (min-width:nth(common.$smallScreen,1)) and (max-width:nth(common.$smallScreen,2)) {
             width:90%;
         }
 
-        @media (min-width: nth($smallScreen,1)) and (max-width: nth($mediumScreen,2)) {
+        @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+            width:90%;
             grid-template-columns: 1fr;
             place-items: center;
 
             .hero_image {
                 display: none;
+
             }
         }
+
+        .hero_image
+        {
+            // border:1px solid red;
+
+            img{
+                width:80%;
+                // border:1px solid blue;
+                height:50rem;
+            }
+        }
+
         .hero_content {
 
-            @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
-                width: 80%;
+            @media (min-width: nth(common.$mediumScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+                width: 100%;
             }
 
-            @media (min-width: nth($smallScreen,1)) and (max-width: nth($mediumScreen,2)) {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+                @include common.centerHV();
                 flex-direction: column;
                 padding: 2rem;
             }
+
+       
 
             .title {
                 width: 100%;
 
                 h1 {
-                    font-size: $largeScreenTitleFontSize;
+                    font-size: common.$largeScreenTitleFontSize;
                     line-height: 1.2;
                     text-align: left;
-                    color:$mainColor;
+                    color:common.$mainColor;
 
-                    @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
-                        font-size: $mediumScreenTitleFontSize;
+                    @media (min-width: nth(common.$mediumScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+                        font-size: 3.3rem;
                         text-align: center;
                     }
 
-                    @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
-                        font-size: $smallScreenTitleFontSize;
+                    @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                        font-size: common.$smallScreenTitleFontSize;
                         text-align: center;
                     }
                 }
             }
             .description {
-                font-size: $largeScreenTextSize;
-                line-height: 1.5;
+                font-size: common.$largeScreenTextSize;
+                line-height: 1.9;
                 text-align: left;
 
-                @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
-                    font-size: $mediumScreenTextSize;
+                @media (min-width: nth(common.$mediumScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
+                    font-size: 2rem;
                     text-align: center;
                 }
 
-                @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
-                    font-size: $smallScreenTextSize;
+                @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                    font-size: common.$smallScreenTextSize;
                     text-align: center;
                 }
             }
 
             .buttons {
+
+                
+                @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                   margin-top: 2rem;
+                }
+
                 img {
-                    @media (min-width: nth($mediumScreen,1)) and (max-width: nth($mediumScreen,2)) {
+                    @media (min-width: nth(common.$mediumScreen,1)) and (max-width: nth(common.$mediumScreen,2)) {
                         width: 12rem;
                         height: 4rem;
                     }
 
-                    @media (min-width: nth($smallScreen,1)) and (max-width: nth($smallScreen,2)) {
-                        width: 8rem;
-                        height: 2.8rem;
+                    @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
+                        width: 12rem;
+                        height: 4rem;
                     }
                 }
             }

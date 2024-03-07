@@ -1,0 +1,111 @@
+.about_us_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0rem;
+
+    .about_us_content {
+        width: 50vw;
+
+        @media (max-width:1300px){
+            width:60vw;
+        }
+
+        @media (max-width:767px){
+            width:80vw;
+        }
+
+        .about_us_title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .title {
+
+                h1 {
+                    font-size: 2.6rem;
+                    text-transform: common.$textTranform;
+                    color: common.$color2;
+                    text-align: center;
+                }
+
+            }
+
+            .about_us_img {
+                margin: 4rem 0rem;
+
+                img {
+                    width: 10rem;
+                    height: 10rem;
+                }
+            }
+
+        }
+
+        .about_us_body {
+            .about_us_description {
+                p {
+                    color: gray;
+                    letter-spacing: 0;
+                    text-transform: none;
+                    font-size: 1.5rem;
+                    margin: 3rem 0rem;
+                    line-height: 1.9;
+                    word-break: break-all;
+                }
+            }
+
+            .team {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin:2rem 0rem;
+
+                .team-img {
+                    img {
+                        width: 40rem;
+                        height: 50rem;
+                        object-fit: cover;
+                        object-position: center;
+                        border-radius:0.8rem;
+                    }
+                }
+
+                .team-name {
+                    h1 {
+                        color: common.$color2;
+                        font-size: 1.7rem;
+                        font-weight: bold;
+                    }
+
+                    margin-top: 2rem;
+                }
+
+                .team-role {
+                    margin: 1rem 0rem;
+
+                    h2 {
+                        color: common.$darkColor;
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .team-description {
+                    p {
+                        color: gray;
+                        letter-spacing: 0;
+                        text-transform: none;
+                        font-size: 1.5rem;
+                        margin: 3rem 0rem;
+                        line-height: 1.9;
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+    }
+}

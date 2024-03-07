@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _jsdom = require("jsdom");
-
 var _axios = _interopRequireDefault(require("axios"));
 
 var _https = _interopRequireDefault(require("https"));
