@@ -15,11 +15,10 @@ var ConnectMongo = function ConnectMongo() {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(_mongoose["default"].connect(process.env.MONGODB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-          }).then(function (data) {
+          return regeneratorRuntime.awrap(_mongoose["default"].connect(process.env.MONGODB_URL).then(function (data) {
             console.log("Successfully connected With " + data.connections[0].host);
+          })["catch"](function (e) {
+            console.log(e);
           }));
 
         case 2:
