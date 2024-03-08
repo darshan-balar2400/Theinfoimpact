@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <>
       <nav className="navbar_container">
-        <div className="navbar_content grid grid-cols-2 items-center">
+        <div className="navbar_content ">
           <div className="logo">
             <div className="content">
               <div
@@ -68,7 +68,7 @@ const Header = () => {
         </div>
         <Header2 />
       </nav>
-      <nav className="mobile_navbar" ref={MobileMenu}>
+      <nav className="mobile_navbar" ref={MobileMenu} id="mobile_navbar">
         <div className="mobile_navbar_content">
           <div className="close_menu">
             <AiOutlineCloseSquare onClick={() => CloseMobileMenu()} />
@@ -81,7 +81,7 @@ const Header = () => {
           <div className="links_container">
             <ul>
               <li>
-                <Link href="/readnow">
+                <Link href="/readnow" onClick={() => CloseMobileMenu()}>
                   <span className="left">
                     <Image
                       src="/images/mobile/news.png"
@@ -96,7 +96,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/blog">
+                <Link href="/blog" onClick={() => CloseMobileMenu()}>
                   <span className="left">
                     <Image
                       src="/images/mobile/abouty.png"
@@ -111,7 +111,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/about">
+                <Link href="/about" onClick={() => CloseMobileMenu()}>
                   <span className="left">
                     <Image
                       src="/images/mobile/info.png"
@@ -126,7 +126,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
+                <Link href="/contact" onClick={() => CloseMobileMenu()}>
                   <span className="left">
                     <Image
                       src="/images/mobile/support.png"
@@ -140,10 +140,7 @@ const Header = () => {
                   </span>
                 </Link>
               </li>
-              <div
-                id="google_translate_element"
-                className="google-translate-container ml-12"
-              ></div>
+           
             </ul>
           </div>
         </div>

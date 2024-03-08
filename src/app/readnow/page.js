@@ -7,9 +7,8 @@ import { TbCategoryFilled } from "react-icons/tb";
 import { IoMdCloseCircle } from "react-icons/io";
 import LoadingContainer from "@/components/LoadingContainer";
 import { useMediaQuery } from "react-responsive";
-
+import debounce from "lodash/debounce";
 const ReadNow = () => {
-
   // responsive
   const isMobile = useMediaQuery({ minWidth: 0, maxWidth: 601 });
 
@@ -27,39 +26,50 @@ const ReadNow = () => {
   const lastArticleRef = useRef(null);
   const articlesContainerRef = useRef(null);
 
-  // when user scroll
-  const handleKeyDown = () => {
-    if (event.key === "ArrowDown") {
-      const articlesContainer = articlesContainerRef.current;
-      const articles = articlesContainer.querySelectorAll(".article");
+  useEffect(() => {
+    const debouncedHandleScroll = debounce(handleScroll, 500); // Increase debounce delay to 500 milliseconds
 
-      const windowHeight = window.innerHeight;
-      const containerTop = articlesContainer.getBoundingClientRect().top;
+    let lastFetchTime = performance.now(); // Initialize last fetch time
 
-      let lastVisibleIndex = -1;
+    function handleScroll() {
+      if (!loading) {
+        const currentTime = performance.now();
+        const container = articlesContainerRef.current;
+        if (!container) return;
+        // Check if at least 500 milliseconds have passed since the last fetch
+        if (currentTime - lastFetchTime > 500) {
+          let scrollHeight = articlesContainerRef.current.scrollHeight;
+          let scrollTop = parseInt(articlesContainerRef.current.scrollTop);
 
-      articles.forEach((article, index) => {
-        const rect = article.getBoundingClientRect();
-        const isVisible = rect.top - containerTop < windowHeight;
+          let trigger = parseInt((80 / 100) * scrollHeight);
 
-        if (isVisible) {
-          lastVisibleIndex = index;
+          if (scrollTop >= trigger) {
+            if (!loading && pageNumber < totalPage) {
+              setPageNumber((prevPageNumber) => prevPageNumber + 1);
+
+              lastFetchTime = currentTime; // Update last fetch time
+            }
+          }
         }
-      });
-
-      if (lastVisibleIndex !== -1 && articles.length - lastVisibleIndex === 4) {
-        getMoreNews();
       }
     }
-  };
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [data]);
+    const container = articlesContainerRef.current;
+    if (container) {
+      articlesContainerRef.current.addEventListener(
+        "scroll",
+        debouncedHandleScroll
+      );
 
+      return () => {
+        articlesContainerRef.current &&
+          articlesContainerRef.current.removeEventListener(
+            "scroll",
+            debouncedHandleScroll
+          );
+      };
+    }
+  }, [totalPage, loading, pageNumber]);
   // when pageNUmber changes, we will fetch more data
   useEffect(() => {
     if (pageNumber >= 0) {
@@ -103,8 +113,8 @@ const ReadNow = () => {
         setLoading(false);
         setExistLoading(false);
 
-        console.log(pageNumber);
-        console.log(data.length);
+        console.log("Page Number = " + pageNumber);
+        // console.log("Data Ledata.length);
       } else {
         setLoadMoreButtonState(false);
       }
@@ -142,6 +152,7 @@ const ReadNow = () => {
               </div>
             </div>
           )}
+
           <div className="content">
             {loading == true ? (
               <LoadingContainer />
@@ -201,6 +212,22 @@ const ReadNow = () => {
                           {article.news_obj ? article.news_obj.content : ""}
                         </p>
                       </div>
+                      {index == data.length - 4 ? (
+                        <div className="showLoadMore" id="showLoadMore" hidden>
+                          <button
+                            className="button"
+                            onClick={() => getMoreNews()}
+                          >
+                            {loading ? (
+                              <span className="buttonloader"></span>
+                            ) : (
+                              "Load More"
+                            )}
+                          </button>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 ) : (

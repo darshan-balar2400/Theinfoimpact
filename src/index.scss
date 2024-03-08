@@ -131,17 +131,6 @@ html {
     // border-radius: 0.5rem;
     font-size: 1.5rem;
     margin-bottom: 7rem;
-
-    @media (min-width: nth(common.$smallScreen,1)) and (max-width: nth(common.$smallScreen,2)) {
-        display: none;
-        position: sticky;
-        bottom: 10%;
-        // border-radius: 30%;
-        width: 15rem;
-        // height:15rem;
-        // left:50%;
-        // translate: translateX(-50%);
-    }
 }
 .buttonloader {
     border: 0.3rem solid #f3f3f3;

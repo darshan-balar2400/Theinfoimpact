@@ -257,7 +257,7 @@ html {
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a {
   border: 1px solid rgb(231, 227, 227);
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 1rem;
@@ -268,19 +268,19 @@ html {
   cursor: pointer;
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a span {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a .left {
-  margin-left: 2rem;
+  margin-left: 1.5rem;
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a:hover {
   color: #008080;
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a .linkname {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .mobile_navbar .mobile_navbar_content .links_container ul li a .right {
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px solid #888A94;
 }
 
@@ -548,6 +548,7 @@ html {
   width: 75%;
   margin: 2rem 0rem;
   flex-direction: column;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -567,6 +568,14 @@ html {
     scroll-snap-type: y mandatory;
     margin: 0;
   }
+}
+.read_container .articles .mobile_loading {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .read_container .articles .articles_title {
   margin-top: 3rem;
@@ -601,7 +610,7 @@ html {
   grid-template-columns: 40% 1fr;
   grid-template-rows: auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  scroll-snap-align: start;
+  scroll-snap-align: end;
   margin-bottom: 2rem;
 }
 @media (min-width: 500px) and (max-width: 1100px) {
@@ -614,8 +623,8 @@ html {
 @media (min-width: 0px) and (max-width: 499px) {
   .read_container .articles .article {
     width: 100%;
-    min-height: calc(100vh - (81.1px + 5vh));
-    max-height: calc(100vh - (81.1px + 5vh));
+    min-height: calc(100vh - (81.1px + 10vh));
+    max-height: calc(100vh - (81.1px + 10vh));
     overflow: hidden;
     grid-template-columns: 1fr;
     grid-template-rows: 35% 1fr;
@@ -670,11 +679,22 @@ html {
   position: relative;
   grid-template-rows: auto 1fr;
   gap: 1rem;
+  position: relative;
 }
 @media (min-width: 0px) and (max-width: 499px) {
   .read_container .articles .article .right {
     grid-template-rows: max-content auto;
   }
+}
+.read_container .articles .article .right .showLoadMore {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+}
+.read_container .articles .article .right .showLoadMore button {
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
 }
 .read_container .articles .article .right .title {
   padding: 2rem;
@@ -1126,10 +1146,20 @@ footer .footer_container .footer_content .top_content .share_info .social_icons 
   margin-left: 1.5rem;
 }
 footer .footer_container .footer_content .top_content .share_info .subscribe {
-  display: flex;
+  display: grid;
   grid-template-columns: 1fr auto;
   gap: 2rem;
-  height: auto;
+}
+@media (min-width: 0px) and (max-width: 1250px) {
+  footer .footer_container .footer_content .top_content .share_info .subscribe {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto;
+    gap: 0;
+  }
+  footer .footer_container .footer_content .top_content .share_info .subscribe button {
+    width: -moz-max-content;
+    width: max-content;
+  }
 }
 footer .footer_container .footer_content .top_content .share_info .subscribe input {
   border-radius: 0.4rem;
@@ -1580,14 +1610,6 @@ footer .footer_container .bottom_content .links nav a:hover {
   align-items: center;
   font-size: 1.5rem;
   margin-bottom: 7rem;
-}
-@media (min-width: 0px) and (max-width: 600px) {
-  .button {
-    display: none;
-    position: sticky;
-    bottom: 10%;
-    width: 15rem;
-  }
 }
 
 .buttonloader {

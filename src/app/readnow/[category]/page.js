@@ -5,6 +5,7 @@ import Link from "next/link";
 import getNews from "../../datas/getNews";
 import LoadingContainer from "@/components/LoadingContainer";
 import { useMediaQuery } from "react-responsive";
+import debounce from "lodash/debounce";
 const Category = ({ params }) => {
   let name = params.category;
 
@@ -22,45 +23,55 @@ const Category = ({ params }) => {
   const lastArticleRef = useRef(null);
   const articlesContainerRef = useRef(null);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "ArrowDown") {
-      const articlesContainer = articlesContainerRef.current;
-      const articles = articlesContainer.querySelectorAll(".article");
+  useEffect(() => {
+    const debouncedHandleScroll = debounce(handleScroll, 500); // Increase debounce delay to 500 milliseconds
 
-      const windowHeight = window.innerHeight;
-      const containerTop = articlesContainer.getBoundingClientRect().top;
+    let lastFetchTime = performance.now(); // Initialize last fetch time
 
-      let lastVisibleIndex = -1;
+    function handleScroll() {
+      if (!loading) {
+        const currentTime = performance.now();
 
-      articles.forEach((article, index) => {
-        const rect = article.getBoundingClientRect();
-        const isVisible = rect.top - containerTop < windowHeight;
+        const container = articlesContainerRef.current;
+        if (!container) return;
+        // Check if at least 500 milliseconds have passed since the last fetch
+        if (currentTime - lastFetchTime > 500) {
+          let scrollHeight = articlesContainerRef.current.scrollHeight;
+          let scrollTop = parseInt(articlesContainerRef.current.scrollTop);
 
-        if (isVisible) {
-          lastVisibleIndex = index;
+          let trigger = parseInt((80 / 100) * scrollHeight);
+
+          if (scrollTop >= trigger) {
+            if (!loading && pageNumber < totalPage) {
+              setPageNumber((prevPageNumber) => prevPageNumber + 1);
+
+              lastFetchTime = currentTime; // Update last fetch time
+            }
+          }
         }
-      });
-
-      if (lastVisibleIndex !== -1 && articles.length - lastVisibleIndex === 4) {
-        getMoreNews();
       }
     }
-  };
+
+    const container = articlesContainerRef.current;
+    if (container) {
+      articlesContainerRef.current.addEventListener(
+        "scroll",
+        debouncedHandleScroll
+      );
+
+      return () => {
+        articlesContainerRef.current &&
+          articlesContainerRef.current.removeEventListener(
+            "scroll",
+            debouncedHandleScroll
+          );
+      };
+    }
+  }, [totalPage, loading, pageNumber]);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [data]);
-
-  useEffect(() => {
-    if (pageNumber > 0) {
-      if (pageNumber == 1) {
-        fetchData("new");
-      } else {
-        fetchData("notnew");
-      }
+    if (pageNumber >= 0) {
+      fetchData("notnew");
     }
   }, [pageNumber]);
 
@@ -77,7 +88,7 @@ const Category = ({ params }) => {
 
         const response = await getNews({
           lang: "en",
-          category: category ? category : categories[0],
+          category: category ? category : "national",
           pageNumber: pageNumber,
         });
 

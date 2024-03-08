@@ -67,17 +67,22 @@ footer {
                     }
 
                     .subscribe {
-                        display: flex;
+                        display: grid;
                         grid-template-columns: 1fr auto;
                         gap: 2rem;
-
-                        // @media (min-width: 0px) and (max-width: 1250px) {
-                        //     grid-template-columns: 1fr auto;
-                        //     // grid-template-rows: 1fr 1fr;
-                        //     gap:0;
-                        // }
                         // border:1px solid red;
-                        height:auto;
+
+                        @media (min-width: 0px) and (max-width: 1250px) {
+                            grid-template-columns: auto;
+                            grid-template-rows: 1fr auto;
+                            gap:0;
+
+                            button{
+                                width:max-content;
+                            }
+                        }
+                        // border:1px solid red;
+                        // height:auto;
 
                         input {
                             border-radius: 0.4rem;
@@ -118,6 +123,7 @@ footer {
 
                 @media (min-width: 0px) and (max-width: 1250px) {
                     grid-template-columns: 1fr;
+                    // grid-template-columns: 1fr 1fr;
                     grid-template-rows: repeat(auto-fill, 1fr);
 
                     .all_rights {

@@ -1581,14 +1581,6 @@ footer .footer_container .bottom_content .links nav a:hover {
   font-size: 1.5rem;
   margin-bottom: 7rem;
 }
-@media (min-width: 0px) and (max-width: 600px) {
-  .button {
-    display: none;
-    position: sticky;
-    bottom: 10%;
-    width: 15rem;
-  }
-}
 
 .buttonloader {
   border: 0.3rem solid #f3f3f3;
