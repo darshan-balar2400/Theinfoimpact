@@ -216,8 +216,8 @@
 
             @media (min-width: 0px) and (max-width: 499px) {
                 width: 100%;
-                min-height: calc(100vh - (81.1px + 10vh));
-                max-height: calc(100vh - (81.1px + 10vh));
+                min-height: calc(100vh - (81.1px + 13vh));
+                max-height: calc(100vh - (81.1px + 13vh));
                 overflow: hidden;
                 grid-template-columns: 1fr;
                 grid-template-rows: 35% 1fr;
