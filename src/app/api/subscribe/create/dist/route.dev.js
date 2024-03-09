@@ -31,26 +31,25 @@ function POST(req) {
 
         case 5:
           body = _context.sent;
-          console.log(body);
 
           if (body.email) {
-            _context.next = 9;
+            _context.next = 8;
             break;
           }
 
           throw new _nodejsCorekit.ErrorHandler("Please Enter Email Address !", 404);
 
-        case 9:
-          _context.next = 11;
+        case 8:
+          _context.next = 10;
           return regeneratorRuntime.awrap(_SubscribeModel["default"].find({
             email: body.email
           }));
 
-        case 11:
+        case 10:
           isEmail = _context.sent;
 
-          if (!isEmail) {
-            _context.next = 14;
+          if (!(isEmail && Object.keys(isEmail).length > 0)) {
+            _context.next = 13;
             break;
           }
 
@@ -61,11 +60,11 @@ function POST(req) {
             status: 404
           }));
 
-        case 14:
-          _context.next = 16;
+        case 13:
+          _context.next = 15;
           return regeneratorRuntime.awrap(_SubscribeModel["default"].create(body));
 
-        case 16:
+        case 15:
           return _context.abrupt("return", _server.NextResponse.json({
             success: true,
             message: "".concat(body.email, " subscriberd successfully !")
@@ -73,8 +72,8 @@ function POST(req) {
             status: 201
           }));
 
-        case 19:
-          _context.prev = 19;
+        case 18:
+          _context.prev = 18;
           _context.t0 = _context["catch"](0);
           return _context.abrupt("return", _server.NextResponse.json({
             success: false,
@@ -83,10 +82,10 @@ function POST(req) {
             status: 500
           }));
 
-        case 22:
+        case 21:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 19]]);
+  }, null, null, [[0, 18]]);
 }

@@ -7,14 +7,14 @@ export async function POST(req) {
   try {
     await dbConnect();
     let body = await req.json();
-    console.log(body);
+    
     if (!body.email) {
       throw new ErrorHandler("Please Enter Email Address !", 404);
     }
 
     let isEmail = await SubscribeModel.find({ email: body.email });
 
-    if (isEmail) {
+    if (isEmail && Object.keys(isEmail).length > 0) {
       return NextResponse.json(
         { success: false, message: "Email Already Exists !" },
         { status: 404 }
